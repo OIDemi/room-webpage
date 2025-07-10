@@ -4,10 +4,10 @@ import lightImg from "./assets/image-about-light.jpg";
 import ArrowIcon from "./assets/icon-arrow.svg?react";
 import { useState } from "react";
 export default function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(2);
 
   return (
-    <main className=' grid grid-cols-1 lg:grid-cols-[1fr_1fr_0.4fr_1fr] lg:grid-rows-[2fr_0.3fr_1fr] h-screen'>
+    <main className=' grid grid-cols-1 lg:grid-cols-[1fr_1fr_0.4fr_1fr] lg:grid-rows-[2fr_0.3fr_1fr] lg:h-screen'>
       <section className='lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-3'>
         <img src={data[count].image} alt={`Slider Image ${count + 1}`} />
       </section>
