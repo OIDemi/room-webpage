@@ -7,19 +7,19 @@ export default function Button({
   onHandlePrevious,
 }) {
   return (
-    <div aria-label='Navigation Button' className={`${className}`}>
-      <div
+    <div role='Navigation Button' className={`${className}`}>
+      <button
         className='bg-black w-[5.45rem] h-[4rem] flex justify-center items-center cursor-pointer hover:bg-grey-800'
         onClick={onHandlePrevious}
       >
-        <LeftArrow className=' ' />
-      </div>
-      <div
+        <LeftArrow />
+      </button>
+      <button
         className='bg-black w-[5.45rem] h-[4rem] flex justify-center items-center cursor-pointer hover:bg-grey-800'
         onClick={onHandleNext}
       >
-        <RightArrow className='' />
-      </div>
+        <RightArrow />
+      </button>
     </div>
   );
 }

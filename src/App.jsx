@@ -2,12 +2,14 @@ import { data } from "./data/data";
 import darkImg from "./assets/image-about-dark.jpg";
 import lightImg from "./assets/image-about-light.jpg";
 import ArrowIcon from "./assets/icon-arrow.svg?react";
-import MainLogo from "./assets/logo.svg";
+import CloseIcon from "./assets/icon-close.svg?react";
+import RoomLogo from "./assets/logo.svg";
 import { useState } from "react";
 import Button from "./components/Button";
+import MenuNavbar from "./MenuNavbar";
 export default function App() {
   const [count, setCount] = useState(0);
-
+  const [isOpen, setIsOpen] = useState(false);
   function handleNext() {
     if (count === data.length - 1) return;
     setCount((next) => next + 1);
@@ -17,10 +19,34 @@ export default function App() {
     if (count > 0) setCount((prev) => prev - 1);
   }
   return (
-    <main className=' grid grid-cols-1 lg:grid-cols-[1fr_1fr_0.4fr_1fr] lg:grid-rows-[2fr_0.3fr_1fr] lg:h-screen'>
+    <main className=' grid grid-cols-1 lg:grid-cols-[1fr_1fr_0.4fr_1fr] lg:grid-rows-[2fr_0.3fr_1fr] relative'>
+      {isOpen && (
+        <header className='absolute inset-0 h-[100vh] bg-grey-200 '>
+          <div className='flex justify-between items-center bg-white fixed z-10 w-[100vw] p-[2rem]'>
+            <CloseIcon onClick={() => setIsOpen(false)} role='Close Nav' />
+            <nav className='flex gap-1 font-semibold'>
+              <ul className='flex gap-[2rem]'>
+                <li>
+                  <a href='#'>home</a>
+                </li>
+                <li>
+                  <a href='#'>shop</a>
+                </li>
+                <li>
+                  <a href='#'>about</a>
+                </li>
+                <li>
+                  <a href='#'>contact</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+      )}
       <section className='lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-3 relative '>
-        <nav className='absolute hidden lg:flex items-center gap-14 top-[3rem] left-[3rem] '>
-          <img src={MainLogo} alt='Room' />
+        <MenuNavbar setIsOpen={setIsOpen} />
+        <nav className='absolute hidden md:flex items-center gap-14 top-[3rem] left-[3rem] '>
+          <img src={RoomLogo} alt='Room' />
           <ul className='flex gap-[2rem] text-white font-bold'>
             <li>
               <a href='#'>home</a>
@@ -65,7 +91,7 @@ export default function App() {
         <img src={darkImg} alt='Grid Image 3' />
       </section>
       <section className=' lg:-col-start-4 lg:-col-end-2 w-[80%] mx-auto flex flex-col justify-center py-[4rem] lg:py-0 gap-[1rem]'>
-        <h2 className='text-bold font-semibold tracking-[10px]'>
+        <h2 className='text-bold font-semibold tracking-[5px]'>
           ABOUT OUR FURNITURE
         </h2>
         <p className='text-grey-500 font-medium'>
